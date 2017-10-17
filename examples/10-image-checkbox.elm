@@ -6,7 +6,7 @@ import Markdown
 
 
 main =
-  Html.beginnerProgram { model = Model, update = update, view = view }
+  Html.beginnerProgram { model = initalModel, update = update, view = view }
 
 
 
@@ -26,7 +26,8 @@ type alias Model =
   image: Image
   }
 
-
+initalModel: Model
+initalModel = Model False "baseurl" "imagepath"
 
 
 
@@ -36,7 +37,7 @@ type alias Model =
 type alias Msg = Model
 
 update : Msg-> Model -> Model
-update msg model = Model(selected,True)
+update msg model = initalModel
 
 
 -- VIEW
