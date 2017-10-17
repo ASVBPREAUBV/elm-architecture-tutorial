@@ -13,6 +13,12 @@ main =
 -- MODEL
 type alias Image  = String
 
+imageContainer : Bool -> Html msg
+imageContainer  selected=
+    case selected of
+    True -> div[][text "selected"]
+    False -> div[][text "not selected"]
+
 image : String -> Html msg
 image path =
   img
@@ -20,24 +26,23 @@ image path =
     []
 
 
-type alias Model =
-  { selected : Bool,
-  baseUrl:String,
-  image: Image
-  }
+type alias Model = {
+    selected : Bool,
+    baseUrl:String
+    }
 
 initalModel: Model
-initalModel = Model False "baseurl" "imagepath"
+initalModel = Model False "http://via.placeholder.com/350x150"
 
 
 
 -- UPDATE
 
 
-type alias Msg = Model
+type Msg = ToggleSelection
 
-update : Msg-> Model -> Model
-update msg model = initalModel
+update : Msg -> Model -> Model
+update msg model= Model (not model.selected) model.baseUrl
 
 
 -- VIEW
@@ -45,6 +50,7 @@ update msg model = initalModel
 
 view :Model -> Html Msg
 view model =
-  div []
-    [ text "testext"]
+  div [onClick ToggleSelection]
+    [ image model.baseUrl,
+    imageContainer model.selected]
 
