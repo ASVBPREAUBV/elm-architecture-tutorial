@@ -14,3 +14,9 @@ elm-reactor
 Now go to [http://localhost:8000/](http://localhost:8000/) and start looking at the `examples/` directory. When you edit an Elm file, just refresh the corresponding page in your browser and it will recompile!
 
 
+## Install Packages
+Example:
+
+[rtfeldman/elm-css](http://package.elm-lang.org/packages/rtfeldman/elm-css/latest)
+
+    elm-package install rtfeldman/elm-css
